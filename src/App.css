@@ -36,3 +36,38 @@
     transform: rotate(360deg);
   }
 }
+
+.list .action {
+  cursor: pointer;
+}
+
+.submit-form {
+  max-width: 300px;
+  margin: auto;
+}
+
+.edit-form {
+  max-width: 300px;
+  margin: auto;
+}
+.small-title{
+  font-size: 12px;
+  color:gray;
+}
+.small-title2{
+  font-size: 12px;
+}
+.arrow {
+  border: solid gray;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  cursor: pointer;
+}
+.up {
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+}
+.text-center{
+  text-align: center;
+}
