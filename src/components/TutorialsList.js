@@ -45,7 +45,10 @@ const TutorialsList = (props) => {
 
       useEffect(retrieveTutorials, [page, pageSize]);
 
- 
+      const handlePageChange = (event, value) => {
+        setPage(value);
+      };
+
 
       const columns = useMemo(
         () => [
@@ -74,7 +77,7 @@ const TutorialsList = (props) => {
             Cell: ({ cell }) => {
               return (
                 <React.Fragment>
-                  <div>{cell.row.original.title} </div>
+                  <div>{cell.row.original.title} <small className="small-title">({cell.row.original.url})  by</small> <small className="small-title2">{cell.row.original.author}</small> <small className="small-title">{cell.row.original.url}  by</small> <small className="small-title">{moment(cell.row.original.created_at).startOf('hour').fromNow()}</small><small className="small-title2"> [hide] </small></div>
                 </React.Fragment>
                   )
             }
@@ -128,7 +131,16 @@ const TutorialsList = (props) => {
               </tbody>
             </table>
             <div className="mt-3">
-     
+              <Pagination
+                className="my-3 float-right"
+                count={count}
+                page={page}
+                siblingCount={1}
+                boundaryCount={1}
+                variant="outlined"
+                shape="rounded"
+                onChange={handlePageChange}
+              />
             </div>
           </div>
         </div>
