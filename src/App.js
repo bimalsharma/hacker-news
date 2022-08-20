@@ -9,11 +9,10 @@ function App() {
     <div>
       <div className="container mt-3">
       <Router>
-
         <Routes>
           <Route exact path="/" element={<TutorialsList/>}/>
         </Routes>
-    </Router>
+      </Router>
       </div>
     </div>
   );

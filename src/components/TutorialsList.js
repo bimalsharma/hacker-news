@@ -49,6 +49,18 @@ const TutorialsList = (props) => {
         setPage(value);
       };
 
+      const handleClick = (event, param) => {
+        const items = JSON.parse(localStorage.getItem('items'));
+        const newState = items.map(obj => {
+          if (obj.objectID === param) {
+            return {...obj, points: obj.points+1};
+          }
+          return obj;
+        });
+        localStorage.setItem('items', JSON.stringify(newState));
+        const data = JSON.parse(localStorage.getItem('items'));
+        setTutorials(data);
+      };
 
       const columns = useMemo(
         () => [
@@ -66,7 +78,7 @@ const TutorialsList = (props) => {
             Cell: ({ cell }) => {
               return (
                 <React.Fragment>
-                  <div className="text-center"><i className="arrow up"></i></div>
+                  <div onClick={event => handleClick(event, cell.row.original.objectID)} className="text-center"><i className="arrow up"></i></div>
                 </React.Fragment>
                   )
             }
