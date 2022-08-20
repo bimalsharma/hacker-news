@@ -3,6 +3,8 @@ import Pagination from "@material-ui/lab/Pagination";
 import TutorialDataService from "../services/TutorialService";
 import { useTable } from "react-table";
 import moment from "moment";
+import MyCharts from './Charts';
+
 const TutorialsList = (props) => {
     const [tutorials, setTutorials] = useState([]);
     const tutorialsRef = useRef();
@@ -57,6 +59,7 @@ const TutorialsList = (props) => {
           }
           return obj;
         });
+        console.log(newState);
         localStorage.setItem('items', JSON.stringify(newState));
         const data = JSON.parse(localStorage.getItem('items'));
         setTutorials(data);
@@ -154,6 +157,7 @@ const TutorialsList = (props) => {
                 onChange={handlePageChange}
               />
             </div>
+            <MyCharts data={tutorials} />
           </div>
         </div>
       );
